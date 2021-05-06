@@ -125,7 +125,7 @@
                 <!-- akses kamera -->
                 <div align="center">
                     <video autoplay="true" id="video-webcam" height="300" width="300">
-                        Browsermu tidak mendukung bro, upgrade donk!
+                        Browser tidak mendukung, perlu update!
                     </video>
                 </div>
 

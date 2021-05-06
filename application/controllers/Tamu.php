@@ -59,7 +59,11 @@ class Tamu extends CI_Controller {
 			$data['jeniskelamin'] = $this->input->post('jeniskelamin');
 			$data['keperluan'] = $this->input->post('keperluan');
 			$this->tamu_model->save($data);
+			if($this->db->affected_rows() > 0){
+				echo "<script>alert('Data berhasil di simpan')</script>";
+			}
 			redirect('http://localhost/resepsionis-app/');
+			echo "<script>alert('Input data berhasil');</script>";
 		}
 		else
 		{
