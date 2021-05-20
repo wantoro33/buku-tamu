@@ -31,7 +31,7 @@
 
       <form action="<?=base_url()?>satpam/laporan" method="post">
         <div class="input-group mb-3">
-          <input type="user" class="form-control" placeholder="User Name">
+          <input type="user" class="form-control" placeholder="User Name" autocomplete="off">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" autocomplete="off">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

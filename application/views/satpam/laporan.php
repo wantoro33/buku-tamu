@@ -16,6 +16,7 @@
             
             <div class="card-body">
             <img class="img-fluid" src="<?=base_url('assets/pics/header-satpam.png')?>" alt="header" width="1300" height="350"></img>
+            <br/><br/>
             <?php 
             if(validation_errors() != false)
             {
