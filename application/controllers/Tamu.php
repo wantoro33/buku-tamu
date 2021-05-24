@@ -19,23 +19,17 @@ class Tamu extends CI_Controller {
 		$this->load->view('tamu/create',$datakota);
 	}
 
-	public function listKota(){
-		// Ambil data ID Provinsi yang dikirim via ajax post
-		$idkota = $this->input->post('idkota');
-		
-		$kelurahan = $this->Dropdown_model->tampil_kelurahan();
-		
-		// Buat variabel untuk menampung tag-tag option nya
-		// Set defaultnya dengan tag option Pilih
-		$lists = "<option value=''>Pilih</option>";
-		
-		foreach($kota as $data){
-		  $lists .= "<option value='".$data->idkelurahan."'>".$data->kelurahan."</option>"; // Tambahkan tag option ke variabel $lists
-		}
-		
-		$callback = array('list_kelurahan'=>$lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
-		echo json_encode($callback); // konversi varibael $callback menjadi JSON
-	  }
+	public function listKecamatan(){
+		$idkota = $this->input->post('kota');
+		$getdatakecamatan = $this->Dropdown_model->kecamatanByKota($idkota);
+		echo json_encode($getdatakecamatan);
+	}
+
+	public function listKelurahan(){
+		$idkecamatan = $this->input->post('kecamatan');
+		$getdatakelurahan = $this->Dropdown_model->kelurahanByKecamatan($idkecamatan);
+		echo json_encode($getdatakelurahan);
+	}
 
 	public function save()
 	{

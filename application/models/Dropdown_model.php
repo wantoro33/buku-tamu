@@ -9,7 +9,9 @@ class Dropdown_model extends CI_Model{
    
     public function tampil_kota()
     {  
-        return $this->db->get($this->tableKota)->result();
+        $this->db->order_by("idkota", "asc");
+        $query = $this->db->get($this->tableKota);
+        return $query->result();
     }
 
     public function tampil_kecamatan()
@@ -21,5 +23,22 @@ class Dropdown_model extends CI_Model{
     {  
         return $this->db->get($this->tableKelurahan)->result();
     }
- 
+    
+    public function kecamatanByKota($idkota) {
+        $this->db->from('kecamatan');
+        $this->db->where('idkota', $idkota);
+        $this->db->order_by('kecamatan', 'asc');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    public function kelurahanByKecamatan($idkecamatan) {
+        $this->db->from('kelurahan');
+        $this->db->where('idkecamatan', $idkecamatan);
+        $this->db->order_by('kelurahan', 'asc');
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
 }

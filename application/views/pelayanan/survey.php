@@ -15,7 +15,7 @@
         <div class="card-body">
           <img class="img-fluid" src="<?=base_url('assets/pics/header-survey.png')?>" alt="header" width="1300" height="350"></img>
           <div class="container-fluid">
-            <marquee><h4>Silahkan klik emoticon sesuai pilihan anda.</h4></marquee>
+            <marquee><h4>Silahkan klik/pilih emoticon sesuai pilihan anda.</h4></marquee>
             <?php 
             if(validation_errors() != false)
             {

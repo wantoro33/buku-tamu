@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Input Buku Tamu Pengadilan Agama Waingapu</title>
 	<link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+	<!-- <link href="<?php //echo base_url(); ?>assets/css/bootstrap-datepicker3.min.css" rel="stylesheet"> -->
 	<script src="<?php echo base_url(); ?>assets/js/jquery-3.6.0.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.min.js"></script>
+	<!-- <script src="<?php //echo base_url(); ?>assets/js/bootstrap.min.js"></script> -->
+	<!-- <script src="<?php //echo base_url(); ?>assets/js/bootstrap-datepicker.min.js"></script> -->
     <script src="<?php echo base_url(); ?>assets/js/webcam.min.js"></script>
+    <!-- <script src="<?php //echo base_url(); ?>assets/js/jquery.min.js"></script> -->
  
   </head>
   <body style="background-image: url('<?=base_url('assets/pics/bg-form.png')?>'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
@@ -28,15 +31,10 @@
             ?>
             <br/><br/>
             <form method="post" action="<?php echo base_url(); ?>tamu/save">
-                <!-- <div class="form-group">
-                    <label for="tanggal">Tanggal</label>
-                    <input type="datetime-local" class="form-control datepicker" id="tanggal" name="tanggal" value="<?php echo date('m/d/Y h:i:s', time()); ?>">
-                </div> -->
-
                 <div class="row mb-3" >
                     <label for="nomorktp" class="col-sm-2 col-form-label">Nomor KTP</label>
                     <div class="col-sm-10">    
-                        <input type="text" class="form-control" id="nomorktp" name="nomorktp" placeholder="Isikan nomor KTP" style="background-color: #e8f2e4;" autocomplete="off">
+                        <input type="number" class="form-control" id="nomorktp" name="nomorktp" placeholder="Isikan nomor KTP" style="background-color: #e8f2e4;" autocomplete="off">
                     </div>
                 </div>
 
@@ -52,6 +50,7 @@
                     <div class="col-sm-10">
                         <!-- <input type="text" class="form-control" id="kota" name="kota" placeholder="Isikan kota" style="background-color: #e8f2e4;"> -->
                         <select name="kota" id="kota" class="form-control"  style="background-color: #e8f2e4;">
+                            <option value="">Pilih Kota</option>
                             <?php foreach($datakota as $key): ?>
                             <option value="<?php echo $key->idkota ;?>"><?php echo $key->kota ;?></option>
                             <?php endforeach ?>  
@@ -62,37 +61,27 @@
                 <div class="row mb-3">
                     <label for="kecamatan" class="col-sm-2 col-form-label">Kecamatan</label>
                     <div class="col-sm-10">
-                        <!-- <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="Isikan kecamatan" style="background-color: #e8f2e4;"> -->
                         <select name="kecamatan" id="kecamatan" class="form-control"  style="background-color: #e8f2e4;">
-                            <?php foreach($datakecamatan as $key): ?>
-                            <option value="<?php echo $key->idkecamatan ;?>"><?php echo $key->kecamatan ;?></option>
-                            <?php endforeach ?>  
+                            <option value="">Pilih Kecamatan</option>
+                            <!-- <?php //foreach($datakecamatan as $key): ?>
+                            <option value="<?php //echo $key->idkecamatan ;?>"><?php //echo $key->kecamatan ;?></option>
+                            <?php //endforeach ?>   -->
                         </select>
                     </div>
                 </div>
-
+                
                 <div class="row mb-3">
                     <label for="kelurahan" class="col-sm-2 col-form-label">Kelurahan</label>
                     <div class="col-sm-10">
-                        <!-- <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="Isikan kelurahan" style="background-color: #e8f2e4;"> -->
                         <select name="kelurahan" id="kelurahan" class="form-control"  style="background-color: #e8f2e4;">
-                            <?php foreach($datakelurahan as $key): ?>
-                            <option value="<?php echo $key->idkelurahan ;?>"><?php echo $key->kelurahan ;?></option>
-                            <?php endforeach ?>                             
+                            <option value="">Pilih Kelurahan</option>
+                            <!-- <?php //foreach($datakelurahan as $key): ?>
+                            <option value="<?php //echo $key->idkelurahan ;?>"><?php //echo $key->kelurahan ;?></option>
+                            <?php //endforeach ?>                              -->
                         </select>
-
-                    <!--test--> 
-                    <!-- <select name="kelurahan" id="kelurahan" style="width: 200px;">
-                    <   option value="">Pilih</option>
-                    </select>
-
-                    <div id="loading" style="margin-top: 15px;">
-                            <small>Loading...</small>
-                        </div> -->
-                    <!--test-->
                     </div>
                 </div>
-
+                
                 <div class="row mb-3">
                     <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                     <div class="col-sm-10">
@@ -196,12 +185,12 @@
                     //     img.src = canvas.toDataURL('image/png');
                     //     document.body.appendChild(img);
                     // }
-                    Webcam.set({
-                        width: 490,
-                        height: 390,
-                        image_format: 'jpeg',
-                        jpeg_quality: 90
-                    });
+                    // Webcam.set({
+                    //     width: 490,
+                    //     height: 390,
+                    //     image_format: 'jpeg',
+                    //     jpeg_quality: 90
+                    // });
                 
                     Webcam.attach( '#my_camera' );
                 
@@ -281,15 +270,65 @@
         </div>
     </div>
     <footer class="footer">
-	  <div class="container" style="text-align:center;">
-	  	<hr/>
-        <span>Pengadilan Agama Waingapu @<?php echo date('Y'); ?></span>
-      </div>
+	    <div class="container" style="text-align:center;">
+	        <hr/>
+            <span>Pengadilan Agama Waingapu @<?php echo date('Y'); ?></span>
+        </div>
     </footer>
 
-    <!-- script untuk load kelurahan -->                               
+    <!-- load kecamatan dan kelurahan -->
+    <script>
+        $(document).ready(function(){
+            loadkecamatan();
+            loadkelurahan();
+        });
 
-    <!-- end script -->
+        function loadkecamatan(){
+            $("#kota").change(function(){
+                var getkota = $("#kota").val();
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "<?= base_url(); ?>tamu/listKecamatan",
+                    data: {kota: getkota},
+                    success: function(data){
+                        
+                        var html = "";
+                        var i;
+                        html += '<option value="">Pilih Kecamatan</option>';
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value="'+ data[i].idkecamatan +'">'+ data[i].kecamatan +'</option>';
+                        }
+                        $("#kecamatan").html(html);                     
+                    }
+                });console.log(getkota)
+            });
+        }
+
+        function loadkelurahan(){
+            $("#kecamatan").change(function(){
+                var getkecamatan = $("#kecamatan").val();
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "<?= base_url(); ?>tamu/listKelurahan",
+                    data: {kecamatan: getkecamatan},
+                    success: function(data){
+                        
+                        var html = "";
+                        var i;
+                        html += '<option value="">Pilih Kelurahan</option>';
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value="'+ data[i].idkelurahan +'">'+ data[i].kelurahan +'</option>';
+                        }
+                        $("#kelurahan").html(html);                    
+                    }
+                });
+            });
+        }
+    </script>
+    <!-- end load kecamatan kelurahan -->
 
   </body>
 </html>
+
