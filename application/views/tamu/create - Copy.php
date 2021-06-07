@@ -27,7 +27,7 @@
                 }
                 ?>
                 <br/><br/>
-                <form id="register">
+                <form method="post" action="<?php echo base_url(); ?>tamu/save">
                     <div class="row mb-3" >
                         <label for="nomorktp" class="col-sm-2 col-form-label">Nomor KTP</label>
                         <div class="col-sm-10">    
@@ -138,62 +138,20 @@
                     
                         Webcam.attach( '#my_camera' );
                     
-                        // function take_snapshot() {
-                        //     Webcam.snap( function(data_uri) {
-                        //         $(".image-tag").val(data_uri);
-                        //         document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-                        //     } );
-                        // }
+                        function take_snapshot() {
+                            Webcam.snap( function(data_uri) {
+                                $(".image-tag").val(data_uri);
+                                document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+                            } );
+                        }
                     </script>
                     
                     <!-- end: akses kamera -->
 
                     <div style="padding-top: 10px;" align="center">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary" onclick="takeSnapshot()">Simpan</button>
                         <a href="http://localhost/resepsionis-app/" class="btn btn-danger btn-block" role="button">Keluar</a>
                     </div>
-
-                    <!-- simpan data begin -->
-                    <script type="text/javascript">
-                        $('#register').on('submit', function (event) {
-                            event.preventDefault();
-                            var image = '';
-                            var nomorktp = $('#nomorktp').val();
-                            var nama = $('#nama').val();
-                            var kota = $('#kota').val();
-                            var kecamatan = $('#kecamatan').val();
-                            var kelurahan = $('#kelurahan').val();
-                            var alamat = $('#alamat').val();
-                            var nomorhp = $('#nomorhp').val();
-                            var jeniskelamin = $('#jeniskelamin').val();
-                            var keperluan = $('#keperluan').val();
-                            Webcam.snap( function(data_uri) {
-                                image = data_uri;
-                            });
-                            $.ajax({
-                                url: '<?php echo site_url("tamu/save");?>',
-                                type: 'POST',
-                                dataType: 'json',
-                                data: {nomorktp: nomorktp, nama: nama, kota: kota, kecamatan: kecamatan, kelurahan: kelurahan, alamat: alamat, nomorhp: nomorhp, jeniskelamin: jeniskelamin, keperluan: keperluan, image: image},
-                            })
-                            .done(function(data) {
-                                if (data > 0) {
-                                    alert('simpan data sukses');
-                                    $('#register')[0].reset();
-                                    window.location.href="http://localhost/resepsionis-app/";
-                                }
-                            })
-                            .fail(function() {
-                                console.log("error");
-                            })
-                            .always(function() {
-                                console.log("complete");
-                            });
-                            alert('Data berhasil disimpan');
-                            window.location.href="http://localhost/resepsionis-app/";
-                        });
-                    </script>
-                    <!-- simpan data end -->
                 </form>
                 </div>
             </div>

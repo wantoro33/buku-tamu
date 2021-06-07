@@ -7,20 +7,15 @@ class Tamu_model extends CI_Model
     // private $tableKecamatan = "kecamatan";
     // private $tableKelurahan = "kelurahan";
 
+    public function __construct()
+	{
+		parent::__construct();
+		
+	}
+
     public function save($data)
     {
         return $this->db->insert($this->table, $data);
     }
 
-    // public function getAllKota() {
-    //     return $this->db->get('kota')->result();
-    // }
-
-    // public function getAllKecamatan() {
-    //     return $this->db->get($this->tableKecamatan)->result();
-    // }
-
-    // public function getAllKelurahan() {
-    //     return $this->db->get($this->tableKelurahan)->result();
-    // }
 }
