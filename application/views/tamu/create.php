@@ -175,12 +175,12 @@
                         //     img.src = canvas.toDataURL('image/png');
                         //     document.body.appendChild(img);
                         // }
-                        // Webcam.set({
-                        //     width: 490,
-                        //     height: 390,
-                        //     image_format: 'jpeg',
-                        //     jpeg_quality: 90
-                        // });
+                        Webcam.set({
+                            width: 490,
+                            height: 390,
+                            image_format: 'jpeg',
+                            jpeg_quality: 90
+                        });
                     
                         Webcam.attach( '#my_camera' );
                     
