@@ -12,7 +12,6 @@
     </head>
     <body style="background-image: url('<?=base_url('assets/pics/bg-form.png')?>'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
         <div class="container" style="padding-top: 70px;">
-
             <div class="card" style="padding-top: 10px;">
                 <div class="card-body">
                 <img class="img-fluid" src="<?=base_url('assets/pics/header-buku-tamu.png')?>" alt="header" width="1300" height="350"></img>
@@ -32,6 +31,19 @@
                         <label for="nomorktp" class="col-sm-2 col-form-label">Nomor KTP</label>
                         <div class="col-sm-10">    
                             <input type="number" class="form-control" id="nomorktp" name="nomorktp" placeholder="Isikan nomor KTP" style="background-color: #e8f2e4;" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="kota" class="col-sm-2 col-form-label">Kategori Pengunjung</label>
+                        <div class="col-sm-10">
+                            <select name="jenistamu" id="jenistamu" class="form-control"  style="background-color: #e8f2e4;">
+                                <option value="">Pilih Kategori</option>                                
+                                <option value="Pihak Berperkara">Pihak Berperkara</option>
+                                <option value="Kuasa Hukum">Kuasa Hukum</option>
+                                <option value="Saksi">Saksi</option>
+                                <option value="Tamu">Tamu</option>
+                            </select>
                         </div>
                     </div>
 
@@ -159,6 +171,7 @@
                             event.preventDefault();
                             var image = '';
                             var nomorktp = $('#nomorktp').val();
+                            var jenistamu = $('#jenistamu').val();
                             var nama = $('#nama').val();
                             var kota = $('#kota').val();
                             var kecamatan = $('#kecamatan').val();
@@ -174,7 +187,7 @@
                                 url: '<?php echo site_url("tamu/save");?>',
                                 type: 'POST',
                                 dataType: 'json',
-                                data: {nomorktp: nomorktp, nama: nama, kota: kota, kecamatan: kecamatan, kelurahan: kelurahan, alamat: alamat, nomorhp: nomorhp, jeniskelamin: jeniskelamin, keperluan: keperluan, image: image},
+                                data: {nomorktp: nomorktp, jenistamu: jenistamu, nama: nama, kota: kota, kecamatan: kecamatan, kelurahan: kelurahan, alamat: alamat, nomorhp: nomorhp, jeniskelamin: jeniskelamin, keperluan: keperluan, image: image},
                             })
                             .done(function(data) {
                                 if (data > 0) {

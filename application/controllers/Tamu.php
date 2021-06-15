@@ -35,6 +35,7 @@ class Tamu extends CI_Controller {
 	{
 		//$this->form_validation->set_rules('tanggal','Tanggal','required');
 		$this->form_validation->set_rules('nomorktp','Nomor KTP','required');
+		$this->form_validation->set_rules('jenistamu','Kategori Tamu','required');
 		$this->form_validation->set_rules('nama','Nama Lengkap','required');
 		$this->form_validation->set_rules('alamat','Alamat');
 		$this->form_validation->set_rules('nomorhp','Nomor HP','required');
@@ -59,6 +60,7 @@ class Tamu extends CI_Controller {
 			// redirect('http://localhost/resepsionis-app/');
 			// echo "<script>alert('Input data berhasil');</script>";
 			$nomorktp = $this->input->post('nomorktp', true);
+			$jenistamu = $this->input->post('jenistamu', true);
 			$nama = $this->input->post('nama', true);
 			$kota = $this->input->post('kota', true);
 			$kecamatan = $this->input->post('kecamatan', true);
@@ -71,9 +73,10 @@ class Tamu extends CI_Controller {
 			$image = str_replace('data:image/jpeg;base64,','', $image);
 			$image = base64_decode($image);
 			$filename = 'image_'.time().'.png';
-			file_put_contents(FCPATH.'/uploads/'.$filename,$image);
+			file_put_contents(FCPATH.'/uploads/'.$filename,$image) or print_r(error_get_last());
 			$data = array(
 				'nomorktp' => $nomorktp,
+				'jenistamu' => $jenistamu,
 				'nama' => $nama,
 				'kota' => $kota,
 				'kecamatan' => $kecamatan,
